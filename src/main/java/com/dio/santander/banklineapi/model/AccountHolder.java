@@ -1,12 +1,13 @@
 package com.dio.santander.banklineapi.model;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +21,11 @@ public class AccountHolder {
 	private String cpf; 
 	
 	@Column(length = 60)
-	private String name;
+	private String nome;
+	
+	@OneToOne
+	@JoinColumn(name = "especialidade_id")
+	private Specialty especialidade;
 	
 	@Embedded
 	private Account conta;
@@ -48,12 +53,19 @@ public class AccountHolder {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
-	public void setName(String name) {
-		this.name = name;
-	} 
-	
-	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public Specialty getEspecialidade() {
+		return especialidade;
+	}
+	public void setEspecialidade(Specialty especialidade) {
+		this.especialidade = especialidade;
+	}
+
+
+
 }

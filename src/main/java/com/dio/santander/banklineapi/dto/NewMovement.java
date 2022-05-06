@@ -33,5 +33,4 @@ public class NewMovement {
 		this.tipo = tipo;
 	}
 	
-	
 }
